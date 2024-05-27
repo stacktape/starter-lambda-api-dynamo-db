@@ -13,6 +13,7 @@ The configured infrastructure is described in the [stack description section](#s
 
 ## Pricing
 
+
 - The infrastructure required for this application uses exclusively "serverless", pay-per-use infrastructure. If your load won't get high, these costs will be close to $0.
 
 ## Prerequisites
