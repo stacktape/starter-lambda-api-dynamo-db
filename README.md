@@ -1,5 +1,5 @@
 
-# Lambda API with DynamoDB 4
+# Lambda API with DynamoDB 5
 
 > [!TIP]
 > To deploy this project using **GUI-based flow**, navigate to [console](https://console.stacktape.com/create-new-project/git-project-using-console?name=my-stacktape-app&repositoryType=public&repositoryUrl=https://github.com/stacktape/starter-lambda-api-dynamo-db)
