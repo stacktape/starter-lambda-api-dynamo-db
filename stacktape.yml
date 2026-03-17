@@ -34,3 +34,6 @@ resources:
             httpApiGatewayName: apiGateway
             path: /{proxy+}
             method: '*'
+
+  brokenResource:
+    type: this-type-does-not-exist
