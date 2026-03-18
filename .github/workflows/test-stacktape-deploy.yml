@@ -15,6 +15,9 @@ jobs:
           eval "$($FNM_DIR/fnm env --shell bash)"
           node --version
           npm --version
+      - name: Fix npm cache permissions
+        run: |
+          sudo chown -R ec2-user:ec2-user /home/ec2-user/.npm 2>/dev/null || true
       - name: Install Stacktape and deploy
         run: |
           export FNM_DIR="$HOME/.local/share/fnm"
