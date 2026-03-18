@@ -1,0 +1,11 @@
+name: Test Stacktape Runner
+on: workflow_dispatch
+jobs:
+  test:
+    runs-on: [self-hosted, stacktape]
+    steps:
+      - run: echo "Hello from Stacktape self-hosted runner!"
+      - run: uname -a
+      - run: node --version || echo "node not found"
+      - run: which stacktape && stacktape version || echo "stacktape not in PATH"
+      - run: echo "STACKTAPE_API_KEY is set = $([ -n "$STACKTAPE_API_KEY" ] && echo YES || echo NO)"
