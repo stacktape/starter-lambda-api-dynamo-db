@@ -1,0 +1,7 @@
+name: Test Non-Stacktape Label
+on: workflow_dispatch
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "This runs on GitHub-hosted runner, not Stacktape"
