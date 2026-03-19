@@ -14,18 +14,10 @@ jobs:
         run: |
           export FNM_DIR="$HOME/.local/share/fnm"
           eval "$($FNM_DIR/fnm env --shell bash)"
+          echo "PATH=$PATH" >> $GITHUB_ENV
+          echo "FNM_MULTISHELL_PATH=$(dirname $(which node))" >> $GITHUB_ENV
           node --version
-          npm --version
-      - name: Fix npm cache permissions
-        run: |
-          sudo chown -R ec2-user:ec2-user /home/ec2-user/.npm 2>/dev/null || true
-      - name: Install dependencies
-        run: |
-          export FNM_DIR="$HOME/.local/share/fnm"
-          eval "$($FNM_DIR/fnm env --shell bash)"
-          npm install
+      - name: Install project dependencies
+        run: npm install
       - name: Deploy with Stacktape
-        run: |
-          export FNM_DIR="$HOME/.local/share/fnm"
-          eval "$($FNM_DIR/fnm env --shell bash)"
-          npx stacktape deploy --stage gh-runner-test --region eu-west-1 --projectName lambda-starter
+        run: stacktape deploy --stage gh-runner-test --region eu-west-1 --projectName lambda-starter
