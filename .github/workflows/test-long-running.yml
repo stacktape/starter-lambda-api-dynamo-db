@@ -1,0 +1,11 @@
+name: Test Long Running Job
+on: workflow_dispatch
+jobs:
+  long:
+    runs-on: [self-hosted, stacktape]
+    steps:
+      - run: |
+          echo "Long job started at $(date)"
+          echo "Sleeping 60 seconds to test auto-stop awareness..."
+          sleep 60
+          echo "Long job finished at $(date)"

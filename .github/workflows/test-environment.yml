@@ -1,0 +1,74 @@
+name: Test Environment
+on: workflow_dispatch
+jobs:
+  env-check:
+    runs-on: [self-hosted, stacktape]
+    env:
+      MY_WORKFLOW_VAR: "workflow-level-value"
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check GitHub-provided env vars
+        run: |
+          echo "GITHUB_REPOSITORY=$GITHUB_REPOSITORY"
+          echo "GITHUB_SHA=$GITHUB_SHA"
+          echo "GITHUB_REF=$GITHUB_REF"
+          echo "GITHUB_WORKSPACE=$GITHUB_WORKSPACE"
+          echo "RUNNER_NAME=$RUNNER_NAME"
+          echo "RUNNER_OS=$RUNNER_OS"
+          echo "RUNNER_ARCH=$RUNNER_ARCH"
+          echo "RUNNER_TEMP=$RUNNER_TEMP"
+
+      - name: Check workflow env var
+        run: |
+          echo "MY_WORKFLOW_VAR=$MY_WORKFLOW_VAR"
+          if [ "$MY_WORKFLOW_VAR" = "workflow-level-value" ]; then
+            echo "PASS: Workflow env var propagated"
+          else
+            echo "FAIL: Workflow env var missing"
+            exit 1
+          fi
+
+      - name: Check auto-injected Stacktape vars
+        run: |
+          echo "STACKTAPE_API_KEY length: ${#STACKTAPE_API_KEY}"
+          if [ -n "$STACKTAPE_API_KEY" ]; then
+            echo "PASS: STACKTAPE_API_KEY injected"
+          else
+            echo "FAIL: STACKTAPE_API_KEY missing"
+            exit 1
+          fi
+
+      - name: Check node/npm via fnm (manual setup)
+        run: |
+          export FNM_DIR="$HOME/.local/share/fnm"
+          eval "$($FNM_DIR/fnm env --shell bash)"
+          echo "node: $(node --version)"
+          echo "npm: $(npm --version)"
+          echo "bun: $(bun --version 2>/dev/null || echo 'not available')"
+
+      - name: Check tools availability
+        run: |
+          echo "git: $(git --version)"
+          echo "docker: $(docker --version)"
+          echo "aws: $(aws --version)"
+          echo "python3: $(python3 --version)"
+          echo "go: $(go version 2>/dev/null || echo 'not available')"
+          echo "java: $(java -version 2>&1 | head -1)"
+
+      - name: Check checkout worked
+        run: |
+          echo "Files in workspace:"
+          ls -la
+          if [ -f "stacktape.ts" ]; then
+            echo "PASS: Repo files checked out"
+          else
+            echo "FAIL: stacktape.ts not found"
+            exit 1
+          fi
+
+      - name: Verify runner cleanup directory
+        run: |
+          echo "Runner job directories:"
+          ls /opt/actions-runner/jobs/ 2>/dev/null || echo "No jobs directory (expected if cleanup works)"
+          echo "Current job dir: $RUNNER_WORKSPACE"
