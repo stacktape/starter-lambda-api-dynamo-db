@@ -5,10 +5,11 @@ jobs:
     runs-on: [self-hosted, stacktape]
     steps:
       - uses: actions/checkout@v4
-      - name: Check Stacktape API key
+      - name: Check environment
         run: |
           echo "STACKTAPE_API_KEY is set = $([ -n "$STACKTAPE_API_KEY" ] && echo YES || echo NO)"
-          echo "STP_CUSTOM_TRPC_API_ENDPOINT = $STP_CUSTOM_TRPC_API_ENDPOINT"
+          echo "STP_CUSTOM_TRPC_API_ENDPOINT = ${STP_CUSTOM_TRPC_API_ENDPOINT:-not set}"
+          echo "AWS region = $(curl -s http://169.254.169.254/latest/meta-data/placement/region 2>/dev/null || echo unknown)"
       - name: Setup Node via fnm
         run: |
           export FNM_DIR="$HOME/.local/share/fnm"
@@ -18,9 +19,13 @@ jobs:
       - name: Fix npm cache permissions
         run: |
           sudo chown -R ec2-user:ec2-user /home/ec2-user/.npm 2>/dev/null || true
-      - name: Install Stacktape and deploy
+      - name: Install dependencies
         run: |
           export FNM_DIR="$HOME/.local/share/fnm"
           eval "$($FNM_DIR/fnm env --shell bash)"
-          npm i -g stacktape@latest
-          stacktape deploy --stage gh-runner-test --region eu-west-1 --projectName lambda-starter
+          npm install
+      - name: Deploy with Stacktape
+        run: |
+          export FNM_DIR="$HOME/.local/share/fnm"
+          eval "$($FNM_DIR/fnm env --shell bash)"
+          npx stacktape deploy --stage gh-runner-test --region eu-west-1 --projectName lambda-starter

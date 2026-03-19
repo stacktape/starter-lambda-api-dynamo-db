@@ -1,0 +1,17 @@
+name: Test Concurrent Jobs
+on: workflow_dispatch
+jobs:
+  job1:
+    runs-on: [self-hosted, stacktape]
+    steps:
+      - run: |
+          echo "Job 1 started at $(date)"
+          sleep 15
+          echo "Job 1 finished at $(date)"
+  job2:
+    runs-on: [self-hosted, stacktape]
+    steps:
+      - run: |
+          echo "Job 2 started at $(date)"
+          sleep 15
+          echo "Job 2 finished at $(date)"
