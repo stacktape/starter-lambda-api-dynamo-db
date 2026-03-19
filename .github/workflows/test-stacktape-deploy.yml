@@ -18,7 +18,5 @@ jobs:
           node --version
       - name: Install project dependencies
         run: npm install
-      - name: Fix Docker permissions
-        run: sudo chown -R ec2-user:ec2-user /home/ec2-user/.docker 2>/dev/null || true
       - name: Deploy with Stacktape
         run: stacktape deploy --stage gh-runner-test --region eu-west-1 --projectName lambda-starter
