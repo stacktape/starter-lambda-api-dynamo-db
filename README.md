@@ -1,4 +1,3 @@
-
 # Lambda API with DynamoDB 6
 
 > [!TIP]
@@ -9,7 +8,7 @@
 - Runs in a single [Lambda function](https://docs.stacktape.com/compute-resources/lambda-functions/) behind an
   [HTTP API Gateway](https://docs.stacktape.com/resources/http-api-gateways/). Pay only for requests you receive.
 - This project includes a pre-configured [stacktape.yml configuration](stacktape.yml).
-The configured infrastructure is described in the [stack description section](#stack-description)
+  The configured infrastructure is described in the [stack description section](#stack-description)
 
 ## Prerequisites
 
@@ -22,48 +21,43 @@ The configured infrastructure is described in the [stack description section](#s
   <details>
   <summary>Install on Windows (Powershell)</summary>
 
-  ```bash
-  iwr https://installs.stacktape.com/windows.ps1 -useb | iex
-  ```
+```bash
+iwr https://installs.stacktape.com/windows.ps1 -useb | iex
+```
 
   </details>
   <details>
   <summary>Install on Linux</summary>
 
-  ```bash
-  curl -L https://installs.stacktape.com/linux.sh | sh
-  ```
+```bash
+curl -L https://installs.stacktape.com/linux.sh | sh
+```
 
   </details>
   <details>
   <summary>Install on MacOS</summary>
 
-  ```bash
-  curl -L https://installs.stacktape.com/macos.sh | sh
-  ```
+```bash
+curl -L https://installs.stacktape.com/macos.sh | sh
+```
 
   </details>
   <details>
   <summary>Install on MacOS ARM (Apple silicon)</summary>
 
-  ```bash
-  curl -L https://installs.stacktape.com/macos-arm.sh | sh
-  ```
+```bash
+curl -L https://installs.stacktape.com/macos-arm.sh | sh
+```
 
   </details>
 
-
-
-
 ## 1. Generate your project
+
 To initialize the project, use
 
 ```bash
 stacktape init --starterId lambda-api-dynamo-db
 ```
-
-
-
 
 ## 2. Deploy your stack
 
@@ -75,6 +69,7 @@ The deployment will take ~5-15 minutes. Subsequent deploys will be significantly
 <br />
 
 The deployment from local machine will build and deploy the application from your system. This means you also need to have:
+
 - Docker. To install Docker on your system, you can follow [this guide](https://docs.docker.com/get-docker/).- Node.js installed.
 
 <br />
@@ -94,30 +89,30 @@ stacktape deploy --projectName <<project-name>> --stage <<stage>> --region <<reg
 <br />
 
 | Region name & Location     | code           |
-  | -------------------------- | -------------- |
-  | Europe (Ireland)           | eu-west-1      |
-  | Europe (London)            | eu-west-2      |
-  | Europe (Frankfurt)         | eu-central-1   |
-  | Europe (Milan)             | eu-south-1     |
-  | Europe (Paris)             | eu-west-3      |
-  | Europe (Stockholm)         | eu-north-1     |
-  | US East (Ohio)             | us-east-2      |
-  | US East (N. Virginia)      | us-east-1      |
-  | US West (N. California)    | us-west-1      |
-  | US West (Oregon)           | us-west-2      |
-  | Canada (Central)           | ca-central-1   |
-  | Africa (Cape Town)         | af-south-1     |
-  | Asia Pacific (Hong Kong)   | ap-east-1      |
-  | Asia Pacific (Mumbai)      | ap-south-1     |
-  | Asia Pacific (Osaka-Local) | ap-northeast-3 |
-  | Asia Pacific (Seoul)       | ap-northeast-2 |
-  | Asia Pacific (Singapore)   | ap-southeast-1 |
-  | Asia Pacific (Sydney)      | ap-southeast-2 |
-  | Asia Pacific (Tokyo)       | ap-northeast-1 |
-  | China (Beijing)            | cn-north-1     |
-  | China (Ningxia)            | cn-northwest-1 |
-  | Middle East (Bahrain)      | me-south-1     |
-  | South America (São Paulo)  | sa-east-1      |
+| -------------------------- | -------------- |
+| Europe (Ireland)           | eu-west-1      |
+| Europe (London)            | eu-west-2      |
+| Europe (Frankfurt)         | eu-central-1   |
+| Europe (Milan)             | eu-south-1     |
+| Europe (Paris)             | eu-west-3      |
+| Europe (Stockholm)         | eu-north-1     |
+| US East (Ohio)             | us-east-2      |
+| US East (N. Virginia)      | us-east-1      |
+| US West (N. California)    | us-west-1      |
+| US West (Oregon)           | us-west-2      |
+| Canada (Central)           | ca-central-1   |
+| Africa (Cape Town)         | af-south-1     |
+| Asia Pacific (Hong Kong)   | ap-east-1      |
+| Asia Pacific (Mumbai)      | ap-south-1     |
+| Asia Pacific (Osaka-Local) | ap-northeast-3 |
+| Asia Pacific (Seoul)       | ap-northeast-2 |
+| Asia Pacific (Singapore)   | ap-southeast-1 |
+| Asia Pacific (Sydney)      | ap-southeast-2 |
+| Asia Pacific (Tokyo)       | ap-northeast-1 |
+| China (Beijing)            | cn-north-1     |
+| China (Ningxia)            | cn-northwest-1 |
+| Middle East (Bahrain)      | me-south-1     |
+| South America (São Paulo)  | sa-east-1      |
 
 </details>
 <details>
@@ -140,30 +135,30 @@ stacktape codebuild:deploy --stage <<stage>> --region <<region>> --projectName <
 <br />
 
 | Region name & Location     | code           |
-  | -------------------------- | -------------- |
-  | Europe (Ireland)           | eu-west-1      |
-  | Europe (London)            | eu-west-2      |
-  | Europe (Frankfurt)         | eu-central-1   |
-  | Europe (Milan)             | eu-south-1     |
-  | Europe (Paris)             | eu-west-3      |
-  | Europe (Stockholm)         | eu-north-1     |
-  | US East (Ohio)             | us-east-2      |
-  | US East (N. Virginia)      | us-east-1      |
-  | US West (N. California)    | us-west-1      |
-  | US West (Oregon)           | us-west-2      |
-  | Canada (Central)           | ca-central-1   |
-  | Africa (Cape Town)         | af-south-1     |
-  | Asia Pacific (Hong Kong)   | ap-east-1      |
-  | Asia Pacific (Mumbai)      | ap-south-1     |
-  | Asia Pacific (Osaka-Local) | ap-northeast-3 |
-  | Asia Pacific (Seoul)       | ap-northeast-2 |
-  | Asia Pacific (Singapore)   | ap-southeast-1 |
-  | Asia Pacific (Sydney)      | ap-southeast-2 |
-  | Asia Pacific (Tokyo)       | ap-northeast-1 |
-  | China (Beijing)            | cn-north-1     |
-  | China (Ningxia)            | cn-northwest-1 |
-  | Middle East (Bahrain)      | me-south-1     |
-  | South America (São Paulo)  | sa-east-1      |
+| -------------------------- | -------------- |
+| Europe (Ireland)           | eu-west-1      |
+| Europe (London)            | eu-west-2      |
+| Europe (Frankfurt)         | eu-central-1   |
+| Europe (Milan)             | eu-south-1     |
+| Europe (Paris)             | eu-west-3      |
+| Europe (Stockholm)         | eu-north-1     |
+| US East (Ohio)             | us-east-2      |
+| US East (N. Virginia)      | us-east-1      |
+| US West (N. California)    | us-west-1      |
+| US West (Oregon)           | us-west-2      |
+| Canada (Central)           | ca-central-1   |
+| Africa (Cape Town)         | af-south-1     |
+| Asia Pacific (Hong Kong)   | ap-east-1      |
+| Asia Pacific (Mumbai)      | ap-south-1     |
+| Asia Pacific (Osaka-Local) | ap-northeast-3 |
+| Asia Pacific (Seoul)       | ap-northeast-2 |
+| Asia Pacific (Singapore)   | ap-southeast-1 |
+| Asia Pacific (Sydney)      | ap-southeast-2 |
+| Asia Pacific (Tokyo)       | ap-northeast-1 |
+| China (Beijing)            | cn-north-1     |
+| China (Ningxia)            | cn-northwest-1 |
+| Middle East (Bahrain)      | me-south-1     |
+| South America (São Paulo)  | sa-east-1      |
 
 </details>
 <details>
@@ -190,30 +185,30 @@ stacktape codebuild:deploy --stage <<stage>> --region <<region>> --projectName <
 <br />
 
 | Region name & Location     | code           |
-  | -------------------------- | -------------- |
-  | Europe (Ireland)           | eu-west-1      |
-  | Europe (London)            | eu-west-2      |
-  | Europe (Frankfurt)         | eu-central-1   |
-  | Europe (Milan)             | eu-south-1     |
-  | Europe (Paris)             | eu-west-3      |
-  | Europe (Stockholm)         | eu-north-1     |
-  | US East (Ohio)             | us-east-2      |
-  | US East (N. Virginia)      | us-east-1      |
-  | US West (N. California)    | us-west-1      |
-  | US West (Oregon)           | us-west-2      |
-  | Canada (Central)           | ca-central-1   |
-  | Africa (Cape Town)         | af-south-1     |
-  | Asia Pacific (Hong Kong)   | ap-east-1      |
-  | Asia Pacific (Mumbai)      | ap-south-1     |
-  | Asia Pacific (Osaka-Local) | ap-northeast-3 |
-  | Asia Pacific (Seoul)       | ap-northeast-2 |
-  | Asia Pacific (Singapore)   | ap-southeast-1 |
-  | Asia Pacific (Sydney)      | ap-southeast-2 |
-  | Asia Pacific (Tokyo)       | ap-northeast-1 |
-  | China (Beijing)            | cn-north-1     |
-  | China (Ningxia)            | cn-northwest-1 |
-  | Middle East (Bahrain)      | me-south-1     |
-  | South America (São Paulo)  | sa-east-1      |
+| -------------------------- | -------------- |
+| Europe (Ireland)           | eu-west-1      |
+| Europe (London)            | eu-west-2      |
+| Europe (Frankfurt)         | eu-central-1   |
+| Europe (Milan)             | eu-south-1     |
+| Europe (Paris)             | eu-west-3      |
+| Europe (Stockholm)         | eu-north-1     |
+| US East (Ohio)             | us-east-2      |
+| US East (N. Virginia)      | us-east-1      |
+| US West (N. California)    | us-west-1      |
+| US West (Oregon)           | us-west-2      |
+| Canada (Central)           | ca-central-1   |
+| Africa (Cape Town)         | af-south-1     |
+| Asia Pacific (Hong Kong)   | ap-east-1      |
+| Asia Pacific (Mumbai)      | ap-south-1     |
+| Asia Pacific (Osaka-Local) | ap-northeast-3 |
+| Asia Pacific (Seoul)       | ap-northeast-2 |
+| Asia Pacific (Singapore)   | ap-southeast-1 |
+| Asia Pacific (Sydney)      | ap-southeast-2 |
+| Asia Pacific (Tokyo)       | ap-northeast-1 |
+| China (Beijing)            | cn-north-1     |
+| China (Ningxia)            | cn-northwest-1 |
+| Middle East (Bahrain)      | me-south-1     |
+| South America (São Paulo)  | sa-east-1      |
 
 </details>
 <details>
@@ -240,30 +235,30 @@ stacktape codebuild:deploy --stage <<stage>> --region <<region>> --projectName <
 <br />
 
 | Region name & Location     | code           |
-  | -------------------------- | -------------- |
-  | Europe (Ireland)           | eu-west-1      |
-  | Europe (London)            | eu-west-2      |
-  | Europe (Frankfurt)         | eu-central-1   |
-  | Europe (Milan)             | eu-south-1     |
-  | Europe (Paris)             | eu-west-3      |
-  | Europe (Stockholm)         | eu-north-1     |
-  | US East (Ohio)             | us-east-2      |
-  | US East (N. Virginia)      | us-east-1      |
-  | US West (N. California)    | us-west-1      |
-  | US West (Oregon)           | us-west-2      |
-  | Canada (Central)           | ca-central-1   |
-  | Africa (Cape Town)         | af-south-1     |
-  | Asia Pacific (Hong Kong)   | ap-east-1      |
-  | Asia Pacific (Mumbai)      | ap-south-1     |
-  | Asia Pacific (Osaka-Local) | ap-northeast-3 |
-  | Asia Pacific (Seoul)       | ap-northeast-2 |
-  | Asia Pacific (Singapore)   | ap-southeast-1 |
-  | Asia Pacific (Sydney)      | ap-southeast-2 |
-  | Asia Pacific (Tokyo)       | ap-northeast-1 |
-  | China (Beijing)            | cn-north-1     |
-  | China (Ningxia)            | cn-northwest-1 |
-  | Middle East (Bahrain)      | me-south-1     |
-  | South America (São Paulo)  | sa-east-1      |
+| -------------------------- | -------------- |
+| Europe (Ireland)           | eu-west-1      |
+| Europe (London)            | eu-west-2      |
+| Europe (Frankfurt)         | eu-central-1   |
+| Europe (Milan)             | eu-south-1     |
+| Europe (Paris)             | eu-west-3      |
+| Europe (Stockholm)         | eu-north-1     |
+| US East (Ohio)             | us-east-2      |
+| US East (N. Virginia)      | us-east-1      |
+| US West (N. California)    | us-west-1      |
+| US West (Oregon)           | us-west-2      |
+| Canada (Central)           | ca-central-1   |
+| Africa (Cape Town)         | af-south-1     |
+| Asia Pacific (Hong Kong)   | ap-east-1      |
+| Asia Pacific (Mumbai)      | ap-south-1     |
+| Asia Pacific (Osaka-Local) | ap-northeast-3 |
+| Asia Pacific (Seoul)       | ap-northeast-2 |
+| Asia Pacific (Singapore)   | ap-southeast-1 |
+| Asia Pacific (Sydney)      | ap-southeast-2 |
+| Asia Pacific (Tokyo)       | ap-northeast-1 |
+| China (Beijing)            | cn-north-1     |
+| China (Ningxia)            | cn-northwest-1 |
+| Middle East (Bahrain)      | me-south-1     |
+| South America (São Paulo)  | sa-east-1      |
 
 </details>
 
@@ -282,8 +277,8 @@ After a successful deployment, some information about the stack will be printed 
   curl <API_GATEWAY_URL>/posts
   ```
 
-
 ## 4. Run the application in development mode
+
 To run functions in the development mode (remotely on AWS), you can use the
 [dev command](https://docs.stacktape.com/cli/commands/dev/). For example, to develop and debug lambda function `api`, you can use
 
@@ -292,20 +287,24 @@ stacktape dev --region <<your-region>> --stage <<stage>> --resourceName api
 ```
 
 The command will:
+
 - quickly re-build and re-deploy your new function code
 - watch for the function logs and pretty-print them to the terminal
 
 The function is rebuilt and redeployed, when you either:
+
 - type `rs + enter` to the terminal
 - use the `--watch` option and one of your source code files changes
 
 ## 5. Hotswap deploys
+
 - Stacktape deployments use [AWS CloudFormation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/Welcome.html) under the hood. It
   brings a lot of guarantees and convenience, but can be slow for certain use-cases.
 
 - To speed up the deployment, you can use the `--hotSwap` flag which avoids using Cloudformation.
 - Hotswap deployments work only for source code changes (for lambda function, containers and batch jobs) and for content uploads to buckets.
 - If the update deployment is not hot-swappable, Stacktape will automatically fall back to using a Cloudformation deployment.
+
 ```bash
 stacktape deploy --hotSwap --stage <<stage>> --region <<region>> --projectName <<project-name>>
 ```
@@ -321,19 +320,20 @@ stacktape delete --stage <<stage>> --region <<region>>
 
 # Stack description
 
-  Stacktape uses a simple `stacktape.yml` configuration file to describe infrastructure resources, packaging, deployment
-  pipeline and other aspects of your project.
+Stacktape uses a simple `stacktape.yml` configuration file to describe infrastructure resources, packaging, deployment
+pipeline and other aspects of your project.
 
-  You can deploy your project to multiple environments (stages) - for
-  example `production`, `staging` or `dev-john`. A stack is a running instance of an project. It consists of your application
-  code (if any) and the infrastructure resources required to run it.
+You can deploy your project to multiple environments (stages) - for
+example `production`, `staging` or `dev-john`. A stack is a running instance of an project. It consists of your application
+code (if any) and the infrastructure resources required to run it.
 
-  The configuration for this project is described below.
+The configuration for this project is described below.
 
-  ## 1. Resources
+## 1. Resources
 
-  - Every resource must have an arbitrary, alphanumeric name (A-z0-9).
-  - Stacktape resources consist of multiple underlying AWS or 3rd party resources.
+- Every resource must have an arbitrary, alphanumeric name (A-z0-9).
+- Stacktape resources consist of multiple underlying AWS or 3rd party resources.
+
 ### 1.1 HTTP API Gateway
 
 API Gateway receives HTTP requests and routes them to the Lambda function.
@@ -386,16 +386,27 @@ api:
         properties:
           httpApiGatewayName: apiGateway
           path: /{proxy+}
-          method: "*"
+          method: '*'
 ```
+
 # Test commit for GitHub Deployment testing Tue Mar 17 03:10:37 CEST 2026
+
 # Second test push Tue Mar 17 03:17:09 CEST 2026
+
 # Third test push Tue Mar 17 03:28:41 CEST 2026
+
 # Fourth test push Tue Mar 17 03:41:22 CEST 2026
+
 # Comprehensive test 1773747487
+
 # Final comprehensive test 1773753789
+
 # FINAL test 1773759721
+
 # Test DB config 1773767791
+
 # Test TS config 1773767934
+
 # Sequential push 1 1773792931
+
 # Sequential push 2 1773792965
